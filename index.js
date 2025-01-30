@@ -1,1 +1,0 @@
-window.location.href = "https://welber.dev.br";
