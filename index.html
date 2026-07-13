@@ -1,26 +1,1557 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="chart.png" type="image/x-icon" />
-    <title>vision 360</title>
+    <title>NorthIQ · Inteligência que move resultados</title>
+    <meta
+      name="description"
+      content="NorthIQ: a nova experiência em Business Intelligence, mais moderna, rápida e completa."
+    />
     <style>
+      :root {
+        --bg: #0a0e1a;
+        --bg-alt: #0e1424;
+        --card: #131a2c;
+        --card-border: #232c44;
+        --ink: #eef1f8;
+        --ink-dim: #9aa4bd;
+        --gold: #f5b800;
+        --gold-dim: #caa23a;
+        --green: #2ecc71;
+        --blue: #3b82f6;
+        --purple: #a78bfa;
+        --red: #ef4444;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         padding: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Segoe UI", Roboto, -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(10, 14, 26, 0.9);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 24px;
+        gap: 16px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: 700;
+        font-size: 1.15rem;
+        letter-spacing: 0.3px;
+        white-space: nowrap;
+      }
+
+      .logo img {
+        width: 34px;
+        height: 34px;
+      }
+
+      .logo span.accent {
+        color: var(--gold);
+      }
+
+      nav.links {
+        display: flex;
+        gap: 28px;
+        font-size: 0.92rem;
+        color: var(--ink-dim);
+        flex: 1;
+        justify-content: center;
+      }
+
+      nav.links a:hover {
+        color: var(--ink);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid transparent;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background: var(--gold);
+        color: #16130a;
+      }
+
+      .btn-primary:hover {
+        background: #ffc61f;
+      }
+
+      .btn-outline {
+        border-color: var(--card-border);
+        color: var(--ink);
+        background: transparent;
+      }
+
+      .btn-outline:hover {
+        border-color: var(--gold-dim);
+        color: var(--gold);
+      }
+
+      .pill-soon {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--gold);
+        background: rgba(245, 184, 0, 0.1);
+        border: 1px solid rgba(245, 184, 0, 0.35);
+      }
+
+      /* Top alert - Prezado associado, em evidência */
+      .top-alert {
+        background: linear-gradient(
+          135deg,
+          rgba(245, 184, 0, 0.14),
+          rgba(245, 184, 0, 0.02)
+        );
+        border-bottom: 1px solid var(--gold-dim);
+      }
+
+      .top-alert-inner {
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        padding: 22px 24px;
+      }
+
+      .top-alert .ico {
+        font-size: 1.8rem;
+        flex-shrink: 0;
+      }
+
+      .top-alert h3 {
+        margin: 0 0 8px;
+        color: var(--gold);
+        font-size: 1.2rem;
+      }
+
+      .top-alert p {
+        margin: 0 0 6px;
+        color: var(--ink-dim);
+        font-size: 0.95rem;
+      }
+
+      .top-alert .highlight {
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      /* Countdown */
+      .countdown-section {
+        background: var(--bg-alt);
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .countdown-inner {
+        padding: 22px 24px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        text-align: center;
+      }
+
+      .countdown-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--ink-dim);
+      }
+
+      .countdown-timer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .c-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--card);
+        border: 1px solid var(--gold-dim);
+        border-radius: 10px;
+        min-width: 56px;
+        padding: 8px 4px 6px;
+      }
+
+      .c-box span {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .c-box small {
+        font-size: 0.6rem;
+        color: var(--ink-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 3px;
+      }
+
+      .c-sep {
+        color: var(--gold-dim);
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+
+      .countdown-date {
+        font-size: 0.8rem;
+        color: var(--ink-dim);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 56px 0 48px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        color: var(--gold);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        font-size: 2.7rem;
+        line-height: 1.15;
+        margin: 0 0 18px;
+        font-weight: 700;
+      }
+
+      h1 .accent {
+        color: var(--gold);
+      }
+
+      .hero p.lead {
+        color: var(--ink-dim);
+        font-size: 1.05rem;
+        max-width: 480px;
+        margin: 0 0 28px;
+      }
+
+      .feature-mini-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 30px;
+      }
+
+      .feature-mini {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .feature-mini .ico {
+        width: 30px;
+        height: 30px;
+        border-radius: 7px;
+        background: rgba(46, 204, 113, 0.12);
+        color: var(--green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 0.95rem;
+      }
+
+      .feature-mini strong {
+        display: block;
+        font-size: 0.9rem;
+      }
+
+      .feature-mini small {
+        color: var(--ink-dim);
+        font-size: 0.8rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      /* Mockup */
+      .mockup {
+        background: var(--bg-alt);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+        font-size: 0.7rem;
+      }
+
+      .mockup-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .mockup-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 0.82rem;
+      }
+
+      .mockup-brand img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .mockup-topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .mockup-topbar-right .filtros {
+        border: 1px solid var(--card-border);
+        border-radius: 6px;
+        padding: 4px 8px;
+        font-size: 0.62rem;
+        color: var(--gold);
+      }
+
+      .mockup-topbar-right .bell {
+        font-size: 0.75rem;
+      }
+
+      .mockup-topbar-right .avatar {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--card-border);
+        display: inline-block;
+      }
+
+      .mockup-body {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+      }
+
+      .mockup-side {
+        border-right: 1px solid var(--card-border);
+        padding: 12px 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .side-brand {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        font-weight: 700;
+        font-size: 0.68rem;
+        padding: 0 6px 10px;
+        margin-bottom: 4px;
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .side-brand img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .mockup-side .side-item {
+        font-size: 0.62rem;
+        color: var(--ink-dim);
+        padding: 5px 6px;
+        border-radius: 6px;
+        white-space: nowrap;
+      }
+
+      .mockup-side .side-item.active {
+        background: rgba(245, 184, 0, 0.12);
+        color: var(--gold);
+      }
+
+      .mockup-main {
+        padding: 12px;
+        min-width: 0;
+      }
+
+      .mockup-title {
+        font-size: 0.68rem;
+        color: var(--ink-dim);
+        margin-bottom: 10px;
+      }
+
+      .mockup-alert {
+        background: rgba(245, 184, 0, 0.1);
+        border: 1px solid rgba(245, 184, 0, 0.3);
+        color: var(--gold);
+        border-radius: 6px;
+        padding: 5px 8px;
+        font-size: 0.6rem;
+        margin-bottom: 10px;
+      }
+
+      .mockup-two-col {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .mockup-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 8px;
+      }
+
+      .mockup-card .lbl {
+        color: var(--ink-dim);
+        font-size: 0.58rem;
+      }
+
+      .mockup-card .val {
+        font-weight: 700;
+        font-size: 0.68rem;
+        margin: 2px 0;
+      }
+
+      .bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        height: 60px;
+        margin-top: 6px;
+      }
+
+      .bars .bar {
+        flex: 1;
+        background: var(--blue);
+        border-radius: 2px 2px 0 0;
+      }
+
+      .bars .bar.hi {
+        background: var(--green);
+      }
+
+      .bars .bar.lo {
+        background: var(--red);
+      }
+
+      .stat-row-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .stat-row-5 {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+
+      .stat-row-5 .mockup-card {
+        padding: 6px;
+      }
+
+      .stat-row-5 .val {
+        font-size: 0.62rem;
+      }
+
+      .mini-row-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.2fr;
+        gap: 8px;
+      }
+
+      .donut {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: conic-gradient(
+          var(--green) 0 35%,
+          var(--blue) 35% 75%,
+          var(--purple) 75% 100%
+        );
+        margin: 4px auto;
+      }
+
+      .gauge {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: conic-gradient(var(--red) 0 65%, var(--card-border) 65% 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 4px auto;
+      }
+
+      .gauge span {
+        background: var(--card);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+
+      .cat-bar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.56rem;
+        margin-bottom: 5px;
+      }
+
+      .cat-bar .track {
+        flex: 1;
+        height: 5px;
+        border-radius: 3px;
+        background: var(--card-border);
         overflow: hidden;
       }
-      iframe {
-        border: none;
-        width: 100vw;
-        height: 100vh;
+
+      .cat-bar .fill {
+        height: 100%;
+        background: var(--blue);
+        border-radius: 3px;
+      }
+
+      .center-lbl {
+        text-align: center;
+        color: var(--ink-dim);
+        font-size: 0.56rem;
+      }
+
+      /* Sections */
+      section {
+        padding: 64px 0;
+      }
+
+      .section-head {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .section-head h2 {
+        font-size: 1.9rem;
+        margin: 0 0 10px;
+      }
+
+      .section-head h2 .accent {
+        color: var(--gold);
+      }
+
+      .section-head p {
+        color: var(--ink-dim);
+        margin: 0;
+      }
+
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 22px;
+      }
+
+      .card .ico-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+        font-size: 1.1rem;
+      }
+
+      .card h3 {
+        font-size: 1rem;
+        margin: 0 0 6px;
+      }
+
+      .card p {
+        color: var(--ink-dim);
+        font-size: 0.85rem;
+        margin: 0 0 14px;
+      }
+
+      .card .sub-visual {
+        background: var(--bg-alt);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 0.7rem;
+        color: var(--ink-dim);
+      }
+
+      .gauge-big {
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .gauge-big .num {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: var(--green);
+      }
+
+      .bar-line {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.7rem;
+        margin-bottom: 6px;
+      }
+
+      .bar-line .track {
+        flex: 1;
+        height: 6px;
+        border-radius: 3px;
+        background: var(--card-border);
+        overflow: hidden;
+      }
+
+      .bar-line .fill {
+        height: 100%;
+        background: var(--blue);
+        border-radius: 3px;
+      }
+
+      .badge-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .badge-list .badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg-alt);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 8px 10px;
+        font-size: 0.72rem;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        text-align: center;
+      }
+
+      .why-grid .ico-box {
+        margin: 0 auto 12px;
+      }
+
+      /* App / PWA section */
+      .app-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .app-section .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin: 22px 0 0;
+      }
+
+      .app-section .step {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .app-section .step .num {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: rgba(245, 184, 0, 0.14);
+        color: var(--gold);
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .app-section .step p {
+        margin: 0;
+        color: var(--ink-dim);
+        font-size: 0.88rem;
+      }
+
+      .app-section .step strong {
+        color: var(--ink);
+      }
+
+      .app-section .step-highlight {
+        background: linear-gradient(
+          135deg,
+          rgba(245, 184, 0, 0.12),
+          transparent
+        );
+        border: 1px solid rgba(245, 184, 0, 0.3);
+        border-radius: 10px;
+        padding: 10px 12px;
+        margin: 4px -12px -4px;
+      }
+
+      .app-section .step-highlight .num {
+        background: var(--gold);
+        color: #16130a;
+      }
+
+      .app-section .step-highlight p {
+        color: var(--ink);
+      }
+
+      .phone-wrap {
+        position: relative;
+        width: 220px;
+        margin: 0 auto;
+        padding-top: 54px;
+      }
+
+      @keyframes glow-pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(245, 184, 0, 0.35),
+            0 30px 60px -20px rgba(0, 0, 0, 0.6);
+        }
+        50% {
+          box-shadow: 0 0 0 14px rgba(245, 184, 0, 0),
+            0 30px 60px -20px rgba(0, 0, 0, 0.6);
+        }
+      }
+
+      @keyframes toast-drop {
+        0% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .notif-toast {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 236px;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        background: var(--card);
+        border: 1px solid var(--gold-dim);
+        border-radius: 12px;
+        padding: 10px 12px;
+        box-shadow: 0 14px 30px -10px rgba(245, 184, 0, 0.35);
+        z-index: 2;
+        animation: toast-drop 0.5s ease-out;
+      }
+
+      .notif-icon {
+        width: 26px;
+        height: 26px;
+        border-radius: 7px;
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+
+      .notif-icon img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .notif-title {
+        font-size: 0.68rem;
+        font-weight: 700;
+        margin-bottom: 2px;
+      }
+
+      .notif-title span {
+        font-weight: 400;
+        color: var(--ink-dim);
+        font-size: 0.6rem;
+      }
+
+      .notif-body {
+        font-size: 0.68rem;
+        color: var(--ink-dim);
+        line-height: 1.35;
+      }
+
+      .notif-body strong {
+        color: var(--gold);
+      }
+
+      .phone-mock {
+        width: 220px;
+        margin: 0 auto;
+        border: 8px solid #1b2338;
+        border-radius: 32px;
+        background: var(--bg-alt);
+        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+        animation: glow-pulse 3s ease-in-out infinite;
+      }
+
+      .phone-mock .notch {
+        height: 18px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .phone-mock .notch span {
+        width: 60px;
+        height: 6px;
+        background: #1b2338;
+        border-radius: 4px;
+        margin-top: 4px;
+      }
+
+      .phone-mock .screen {
+        padding: 10px 14px 20px;
+      }
+
+      .phone-mock .app-icon {
+        position: relative;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        margin: 8px auto 6px;
+      }
+
+      .phone-mock .app-icon img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .badge-dot {
+        position: absolute;
+        top: -4px;
+        right: -6px;
+        background: var(--red);
+        color: #fff;
+        font-size: 0.55rem;
+        font-weight: 700;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--bg-alt);
+      }
+
+      .phone-mock .app-name {
+        text-align: center;
+        font-size: 0.72rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .phone-mock .fake-row {
+        height: 8px;
+        border-radius: 4px;
+        background: var(--card-border);
+        margin-bottom: 8px;
+      }
+
+      .phone-mock .fake-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 8px;
+      }
+
+      .fake-card-alert {
+        border-color: rgba(245, 184, 0, 0.4);
+        background: linear-gradient(
+          135deg,
+          rgba(245, 184, 0, 0.1),
+          var(--card)
+        );
+      }
+
+      .fake-card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.62rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .fake-tag {
+        background: var(--gold);
+        color: #16130a;
+        font-size: 0.52rem;
+        font-weight: 700;
+        padding: 1px 6px;
+        border-radius: 999px;
+        text-transform: uppercase;
+      }
+
+      /* CTA footer band */
+      .cta-band {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        padding: 28px 32px;
+      }
+
+      .cta-band .left {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .cta-band .rocket {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        background: rgba(245, 184, 0, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+      }
+
+      .cta-band .lines p {
+        margin: 0;
+      }
+
+      .cta-band .lines .top {
+        color: var(--ink-dim);
+        font-size: 0.85rem;
+      }
+
+      .cta-band .lines .bottom {
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+
+      footer {
+        border-top: 1px solid var(--card-border);
+        padding: 26px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--ink-dim);
+        font-size: 0.85rem;
+      }
+
+      footer .logo {
+        font-size: 1rem;
+      }
+
+      footer .logo img {
+        width: 26px;
+        height: 26px;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .app-section {
+          grid-template-columns: 1fr;
+          padding-top: 32px;
+        }
+        nav.links {
+          display: none;
+        }
+        .grid-4,
+        .why-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cta-band {
+          flex-direction: column;
+          text-align: center;
+        }
+        h1 {
+          font-size: 2.1rem;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .grid-4,
+        .why-grid,
+        .feature-mini-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-row-5 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .mini-row-3 {
+          grid-template-columns: 1fr 1fr;
+        }
       }
     </style>
   </head>
   <body>
-    <iframe
-      src="https://app.powerbi.com/view?r=eyJrIjoiMGVlZGVlNDItMWYzMy00OWFhLTk0YTYtMDAxYTNlNjRjYzUwIiwidCI6IjVhMmJhMTQ2LTU2YWItNGFkYS04NzdjLWFhZjliNTkzYzYyZCJ9"
-    ></iframe>
+    <header>
+      <div class="nav wrap">
+        <div class="logo"><img src="images/logo-mark.png" alt="NorthIQ" />orth<span class="accent">IQ</span></div>
+        <nav class="links">
+          <a href="#evolucao">Evolução</a>
+          <a href="#recursos">Recursos</a>
+          <a href="#seguranca">Segurança</a>
+          <a href="#app">Aplicativo</a>
+        </nav>
+        <a class="btn btn-outline" href="bi.html">Acessar BI Antigo</a>
+      </div>
+    </header>
+
+    <div class="top-alert">
+      <div class="wrap top-alert-inner">
+        <div class="ico">📣</div>
+        <div>
+          <h3>Prezado associado,</h3>
+          <p>
+            O antigo BI será desativado em breve, mas não fique triste: algo
+            muito melhor está nascendo!
+          </p>
+          <p>
+            O NorthIQ foi criado para transformar a forma como você analisa e
+            toma decisões. Mais rápido, mais moderno e muito mais completo.
+          </p>
+          <p class="highlight">
+            Em breve, você terá uma nova experiência. Prepare-se para evoluir!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="countdown-section">
+      <div class="wrap countdown-inner">
+        <div class="countdown-label">⏳ Grande lançamento do NorthIQ em</div>
+        <div class="countdown-timer" id="countdown-timer">
+          <div class="c-box"><span id="cd-days">00</span><small>dias</small></div>
+          <div class="c-sep">:</div>
+          <div class="c-box"><span id="cd-hours">00</span><small>horas</small></div>
+          <div class="c-sep">:</div>
+          <div class="c-box"><span id="cd-mins">00</span><small>min</small></div>
+          <div class="c-sep">:</div>
+          <div class="c-box"><span id="cd-secs">00</span><small>seg</small></div>
+        </div>
+        <div class="countdown-date">Sexta-feira, 12h</div>
+      </div>
+    </div>
+
+    <main class="wrap">
+      <section class="hero" id="evolucao">
+        <div>
+          <div class="eyebrow">Inteligência que move resultados</div>
+          <h1>Bem-vindo ao<br />novo <span class="accent">NorthIQ</span></h1>
+          <p class="lead">
+            Uma nova experiência em Business Intelligence, mais moderna,
+            rápida e completa.
+          </p>
+
+          <div class="feature-mini-grid">
+            <div class="feature-mini">
+              <div class="ico">✓</div>
+              <div>
+                <strong>Dashboards interativos</strong>
+                <small>Atualizados todo dia às 19h</small>
+              </div>
+            </div>
+            <div class="feature-mini">
+              <div class="ico">✦</div>
+              <div>
+                <strong>Análises inteligentes</strong>
+                <small>Insights que geram valor</small>
+              </div>
+            </div>
+            <div class="feature-mini">
+              <div class="ico">⚡</div>
+              <div>
+                <strong>Performance superior</strong>
+                <small>Mais velocidade e estabilidade</small>
+              </div>
+            </div>
+            <div class="feature-mini">
+              <div class="ico">◎</div>
+              <div>
+                <strong>Experiência intuitiva</strong>
+                <small>Navegação simples e eficiente</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="bi.html">Acessar BI Antigo →</a>
+            <span class="pill-soon">🚀 NorthIQ disponível em breve</span>
+          </div>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-topbar">
+            <div class="mockup-brand">
+              <img src="images/logo-mark.png" alt="" /> NorthIQ
+            </div>
+            <div class="mockup-topbar-right">
+              <span class="filtros">⚙ Filtros</span>
+              <span class="bell">🔔</span>
+              <span class="avatar"></span>
+            </div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-side">
+              <div class="side-brand"><img src="images/logo-mark.png" alt="" />orth<span class="accent">IQ</span></div>
+              <div class="side-item active">📊 Dashboard</div>
+              <div class="side-item">🛒 Compras</div>
+              <div class="side-item">📈 Vendas</div>
+              <div class="side-item">💳 Repasses</div>
+              <div class="side-item">🤝 Convênio</div>
+              <div class="side-item">💊 PBM</div>
+              <div class="side-item">📣 Campanha</div>
+              <div class="side-item">⚙ Configurações</div>
+            </div>
+            <div class="mockup-main">
+              <div class="mockup-title">Visão geral consolidada dos indicadores</div>
+              <div class="mockup-alert">🔄 Atualizando dados de PBM — 1 min restante</div>
+
+              <div class="mockup-two-col">
+                <div class="mockup-card">
+                  <div class="lbl">🏆 Melhor dia</div>
+                  <div class="val">Quinta-feira</div>
+                  <div class="lbl">R$ 1.927.943,51</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="lbl">Dias de vendas · Julho</div>
+                  <div class="bars">
+                    <div class="bar" style="height: 70%"></div>
+                    <div class="bar hi" style="height: 100%"></div>
+                    <div class="bar" style="height: 60%"></div>
+                    <div class="bar lo" style="height: 22%"></div>
+                    <div class="bar" style="height: 65%"></div>
+                    <div class="bar" style="height: 72%"></div>
+                    <div class="bar" style="height: 68%"></div>
+                    <div class="bar" style="height: 66%"></div>
+                    <div class="bar" style="height: 64%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stat-row-2">
+                <div class="mockup-card">
+                  <div class="lbl">Faturamento</div>
+                  <div class="val" style="color: var(--gold)">R$ 18,78 Mi</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="lbl">Projeção</div>
+                  <div class="val" style="color: var(--gold)">R$ 55,10 Mi</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="lbl">Compras</div>
+                  <div class="val">R$ 7,93 Mi</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="lbl">Tickets</div>
+                  <div class="val">367.233</div>
+                </div>
+              </div>
+
+              <div class="stat-row-5">
+                <div class="mockup-card">
+                  <div class="lbl">Ticket médio</div>
+                  <div class="val">R$ 51,14</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="lbl">Itens vendidos</div>
+                  <div class="val">1.010.394</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="lbl">Itens/venda</div>
+                  <div class="val">2,75</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="lbl">Valor méd. item</div>
+                  <div class="val">R$ 18,59</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="lbl">MIX</div>
+                  <div class="val">26,94%</div>
+                </div>
+              </div>
+
+              <div class="mini-row-3">
+                <div>
+                  <div class="donut"></div>
+                  <div class="center-lbl">Representatividade</div>
+                </div>
+                <div>
+                  <div class="gauge"><span></span></div>
+                  <div class="center-lbl">Meta mensal</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="lbl" style="margin-bottom: 6px">Faturamento por categoria</div>
+                  <div class="cat-bar">
+                    <span>Não medic.</span>
+                    <div class="track"><div class="fill" style="width: 90%"></div></div>
+                  </div>
+                  <div class="cat-bar">
+                    <span>Genéricos</span>
+                    <div class="track"><div class="fill" style="width: 55%"></div></div>
+                  </div>
+                  <div class="cat-bar">
+                    <span>Similares</span>
+                    <div class="track"><div class="fill" style="width: 48%"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="recursos">
+        <div class="section-head">
+          <h2>A <span class="accent">evolução</span> do sistema</h2>
+          <p>Conheça as principais melhorias e novidades do novo NorthIQ</p>
+        </div>
+        <div class="grid-4">
+          <div class="card">
+            <div class="ico-box" style="background: rgba(46,204,113,0.12); color: var(--green)">⚙</div>
+            <h3>Design moderno e intuitivo</h3>
+            <p>Interface renovada, mais confortável e produtiva.</p>
+            <div class="sub-visual">
+              <div class="bar-line">
+                <span>Vendas</span>
+                <div class="track"><div class="fill" style="width: 70%; background: var(--blue)"></div></div>
+              </div>
+              <div class="bar-line">
+                <span>Meta</span>
+                <div class="track"><div class="fill" style="width: 45%; background: var(--purple)"></div></div>
+              </div>
+              <div class="bar-line">
+                <span>Estoque</span>
+                <div class="track"><div class="fill" style="width: 85%; background: var(--green)"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="ico-box" style="background: rgba(245,184,0,0.12); color: var(--gold)">⚡</div>
+            <h3>Performance de alto nível</h3>
+            <p>Mais velocidade no carregamento e atualização dos dados.</p>
+            <div class="sub-visual gauge-big">
+              <div class="num">2.3x</div>
+              <div>mais rápido</div>
+              <small style="color: var(--ink-dim)"
+                >Tempo de carregamento — Antes: 8.2s · Agora: 3.5s</small
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="ico-box" style="background: rgba(167,139,250,0.12); color: var(--purple)">📊</div>
+            <h3>Análises mais completas</h3>
+            <p>Novos indicadores, cruzamentos e visões estratégicas.</p>
+            <div class="sub-visual">
+              <div class="bar-line">
+                <span>Não medicamentos</span>
+                <div class="track"><div class="fill" style="width: 90%"></div></div>
+              </div>
+              <div class="bar-line">
+                <span>Genéricos</span>
+                <div class="track"><div class="fill" style="width: 55%"></div></div>
+              </div>
+              <div class="bar-line">
+                <span>Similares</span>
+                <div class="track"><div class="fill" style="width: 48%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="ico-box" style="background: rgba(59,130,246,0.12); color: var(--blue)">🔒</div>
+            <h3>Segurança e governança</h3>
+            <p>Mais controle de acesso, auditoria e proteção de dados.</p>
+            <div class="sub-visual badge-list">
+              <div class="badge">✅ LGPD — Conformidade</div>
+              <div class="badge">💾 Backup automático</div>
+              <div class="badge">📋 Logs de auditoria</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="seguranca">
+        <div class="section-head">
+          <h2>Por que o novo <span class="accent">NorthIQ</span>?</h2>
+        </div>
+        <div class="why-grid">
+          <div>
+            <div class="ico-box" style="background: rgba(245,184,0,0.12); color: var(--gold)">🕒</div>
+            <h3 style="font-size: 0.95rem">Atualização diária</h3>
+            <p style="color: var(--ink-dim); font-size: 0.82rem">
+              Dados atualizados todos os dias, sempre prontos para você
+              acompanhar o seu negócio.
+            </p>
+          </div>
+          <div>
+            <div class="ico-box" style="background: rgba(59,130,246,0.12); color: var(--blue)">🌐</div>
+            <h3 style="font-size: 0.95rem">Visão 360° do negócio</h3>
+            <p style="color: var(--ink-dim); font-size: 0.82rem">
+              Dashboards completos para uma visão ampla e estratégica.
+            </p>
+          </div>
+          <div>
+            <div class="ico-box" style="background: rgba(46,204,113,0.12); color: var(--green)">📱</div>
+            <h3 style="font-size: 0.95rem">Acesso facilitado</h3>
+            <p style="color: var(--ink-dim); font-size: 0.82rem">
+              Disponível de qualquer lugar, com segurança e agilidade.
+            </p>
+          </div>
+          <div>
+            <div class="ico-box" style="background: rgba(167,139,250,0.12); color: var(--purple)">🔑</div>
+            <h3 style="font-size: 0.95rem">Autonomia para o associado</h3>
+            <p style="color: var(--ink-dim); font-size: 0.82rem">
+              Exporte qualquer relatório do sistema de forma simples, crie
+              novos usuários para o seu time e defina as permissões que
+              quiser.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="app">
+        <div class="app-section">
+          <div>
+            <div class="eyebrow">Novidade</div>
+            <h2 style="font-size: 1.9rem; margin: 0 0 14px">
+              O NorthIQ também vai caber<br />no seu <span class="accent">bolso</span>
+            </h2>
+            <p style="color: var(--ink-dim); font-size: 0.95rem; margin: 0">
+              Em breve o NorthIQ também estará disponível como aplicativo,
+              direto no seu celular — sem precisar baixar nada de loja
+              nenhuma.
+            </p>
+            <div class="steps">
+              <div class="step">
+                <div class="num">1</div>
+                <p>
+                  <strong>Você abre o NorthIQ pelo navegador do celular</strong>,
+                  como já faz hoje.
+                </p>
+              </div>
+              <div class="step">
+                <div class="num">2</div>
+                <p>
+                  <strong>Escolhe a opção "Adicionar à tela inicial"</strong> —
+                  simples assim, sem precisar baixar nada.
+                </p>
+              </div>
+              <div class="step">
+                <div class="num">3</div>
+                <p>
+                  <strong>Pronto</strong>: o ícone do NorthIQ aparece junto
+                  dos seus outros aplicativos, abre rápido, ocupa pouquíssimo
+                  espaço e já vem sempre atualizado — sem precisar passar
+                  pela loja de aplicativos.
+                </p>
+              </div>
+              <div class="step step-highlight">
+                <div class="num">4</div>
+                <p>
+                  <strong>E o melhor: você recebe notificação de repasse direto no celular.</strong>
+                  Assim que um novo repasse for processado, o app avisa na
+                  hora — sem precisar abrir o sistema pra ficar checando.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-wrap">
+            <div class="notif-toast">
+              <div class="notif-icon">
+                <img src="images/logo-mark.png" alt="" />
+              </div>
+              <div class="notif-text">
+                <div class="notif-title">NorthIQ <span>agora</span></div>
+                <div class="notif-body">
+                  💰 Novo repasse disponível: <strong>R$ 12.450,00</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="phone-mock">
+              <div class="notch"><span></span></div>
+              <div class="screen">
+                <div class="app-icon">
+                  <img src="images/logo-mark.png" alt="" />
+                  <span class="badge-dot">1</span>
+                </div>
+                <div class="app-name">NorthIQ</div>
+                <div class="fake-row" style="width: 60%"></div>
+                <div class="fake-row" style="width: 40%; margin-bottom: 16px"></div>
+                <div class="fake-card fake-card-alert">
+                  <div class="fake-card-head">
+                    <span>🔔 Repasses</span>
+                    <span class="fake-tag">novo</span>
+                  </div>
+                  <div class="fake-row" style="width: 80%; background: var(--gold); opacity: 0.6"></div>
+                  <div class="fake-row" style="width: 55%"></div>
+                </div>
+                <div class="fake-card">
+                  <div class="fake-row" style="width: 70%; background: var(--blue); opacity: 0.5"></div>
+                  <div class="fake-row" style="width: 55%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-top: 0">
+        <div class="cta-band">
+          <div class="left">
+            <div class="rocket">🚀</div>
+            <div class="lines">
+              <p class="top">O futuro da inteligência de dados está chegando.</p>
+              <p class="bottom">
+                Prepare-se para uma nova era com o
+                <span style="color: var(--gold)">NorthIQ</span>.
+              </p>
+            </div>
+          </div>
+          <a class="btn btn-primary" href="bi.html">Acessar BI Antigo →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      <div class="logo"><img src="images/logo-mark.png" alt="NorthIQ" />orth<span class="accent">IQ</span></div>
+      <div>© 2026 NorthIQ. Todos os direitos reservados.</div>
+      <div>
+        Dúvidas? <a href="tel:+5527992621084" style="color: var(--gold)">Fale com o TI</a>
+        · <a href="tel:+5527992621084" style="color: var(--ink-dim)">(27) 99262-1084</a>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var target = new Date("2026-07-17T12:00:00-03:00").getTime();
+        var daysEl = document.getElementById("cd-days");
+        var hoursEl = document.getElementById("cd-hours");
+        var minsEl = document.getElementById("cd-mins");
+        var secsEl = document.getElementById("cd-secs");
+
+        function pad(n) {
+          return String(n).padStart(2, "0");
+        }
+
+        function tick() {
+          var diff = target - Date.now();
+          if (diff <= 0) {
+            daysEl.textContent = "00";
+            hoursEl.textContent = "00";
+            minsEl.textContent = "00";
+            secsEl.textContent = "00";
+            clearInterval(timer);
+            return;
+          }
+          var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          var mins = Math.floor((diff / (1000 * 60)) % 60);
+          var secs = Math.floor((diff / 1000) % 60);
+          daysEl.textContent = pad(days);
+          hoursEl.textContent = pad(hours);
+          minsEl.textContent = pad(mins);
+          secsEl.textContent = pad(secs);
+        }
+
+        tick();
+        var timer = setInterval(tick, 1000);
+      })();
+    </script>
   </body>
 </html>
