@@ -105,6 +105,11 @@
         color: var(--ink);
       }
 
+      .nav-actions {
+        display: flex;
+        gap: 10px;
+      }
+
       .btn {
         display: inline-flex;
         align-items: center;
@@ -585,6 +590,140 @@
         text-align: center;
         color: var(--ink-dim);
         font-size: 0.56rem;
+      }
+
+      /* Early access */
+      .early-access-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        background: var(--card);
+        border: 1px solid var(--gold-dim);
+        border-radius: 16px;
+        padding: 40px;
+        background-image: linear-gradient(
+          135deg,
+          rgba(245, 184, 0, 0.08),
+          transparent 60%
+        );
+      }
+
+      .early-access-form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .early-access-form label {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.8rem;
+        color: var(--ink-dim);
+      }
+
+      .early-access-form input {
+        background: var(--bg-alt);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 11px 12px;
+        color: var(--ink);
+        font-size: 0.92rem;
+        font-family: inherit;
+      }
+
+      .early-access-form input:focus {
+        outline: none;
+        border-color: var(--gold-dim);
+      }
+
+      .field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.8rem;
+        color: var(--ink-dim);
+      }
+
+      .cnpj-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .cnpj-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .cnpj-row input {
+        flex: 1;
+      }
+
+      .cnpj-remove {
+        background: transparent;
+        border: 1px solid var(--card-border);
+        color: var(--ink-dim);
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .cnpj-remove:hover {
+        border-color: var(--red);
+        color: var(--red);
+      }
+
+      .add-cnpj-btn {
+        align-self: flex-start;
+        background: transparent;
+        border: none;
+        color: var(--gold);
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 2px 0;
+      }
+
+      .add-cnpj-btn:hover {
+        text-decoration: underline;
+      }
+
+      .early-access-form button[type="submit"] {
+        margin-top: 6px;
+        border: none;
+        font-size: 0.95rem;
+      }
+
+      .early-access-form button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .early-access-msg {
+        margin: 0;
+        font-size: 0.82rem;
+        min-height: 1.2em;
+      }
+
+      .early-access-msg.ok {
+        color: var(--green);
+      }
+
+      .early-access-msg.error {
+        color: var(--red);
+      }
+
+      @media (max-width: 900px) {
+        .early-access-card {
+          grid-template-columns: 1fr;
+          padding: 28px;
+        }
       }
 
       /* Sections */
@@ -1084,7 +1223,10 @@
           <a href="#seguranca">Segurança</a>
           <a href="#app">Aplicativo</a>
         </nav>
-        <a class="btn btn-outline" href="bi.html">Acessar BI Antigo</a>
+        <div class="nav-actions">
+          <a class="btn btn-outline" href="bi.html">Acessar BI Antigo</a>
+          <a class="btn btn-primary" href="#pre-cadastro">Pré-cadastro</a>
+        </div>
       </div>
     </header>
 
@@ -1120,7 +1262,7 @@
           <div class="c-sep">:</div>
           <div class="c-box"><span id="cd-secs">00</span><small>seg</small></div>
         </div>
-        <div class="countdown-date">Sexta-feira, 12h</div>
+        <div class="countdown-date">Segunda-feira, 12h</div>
       </div>
     </div>
 
@@ -1166,8 +1308,8 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="bi.html">Acessar BI Antigo →</a>
-            <span class="pill-soon">🚀 NorthIQ disponível em breve</span>
+            <a class="btn btn-primary" href="#pre-cadastro">Fazer meu pré-cadastro →</a>
+            <a class="btn btn-outline" href="bi.html">Acessar BI Antigo</a>
           </div>
         </div>
 
@@ -1289,6 +1431,44 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="pre-cadastro">
+        <div class="early-access-card">
+          <div class="early-access-info">
+            <div class="eyebrow">Cadastre-se agora</div>
+            <h2 style="font-size: 1.9rem; margin: 0 0 12px">
+              Garanta seu acesso no <span class="accent">lançamento</span>
+            </h2>
+            <p style="color: var(--ink-dim); font-size: 0.95rem; margin: 0 0 0">
+              Preencha seus dados agora para já ter acesso liberado assim que
+              o novo NorthIQ for lançado. Tem mais de um CNPJ? Sem problema,
+              é só adicionar todos.
+            </p>
+          </div>
+
+          <form class="early-access-form" id="early-access-form">
+            <label>
+              Nome completo
+              <input type="text" name="nome" id="ea-nome" required placeholder="Seu nome completo" />
+            </label>
+            <label>
+              E-mail
+              <input type="email" name="email" id="ea-email" required placeholder="seu@email.com" />
+            </label>
+            <div class="field-group">
+              <span class="field-label">CNPJ</span>
+              <div id="cnpj-list" class="cnpj-list">
+                <div class="cnpj-row">
+                  <input type="text" class="cnpj-field" required placeholder="00.000.000/0000-00" inputmode="numeric" maxlength="25" />
+                </div>
+              </div>
+              <button type="button" id="add-cnpj" class="add-cnpj-btn">+ Adicionar outro CNPJ</button>
+            </div>
+            <button type="submit" class="btn btn-primary" id="ea-submit">Fazer meu pré-cadastro →</button>
+            <p class="early-access-msg" id="ea-msg"></p>
+          </form>
         </div>
       </section>
 
@@ -1519,7 +1699,7 @@
 
     <script>
       (function () {
-        var target = new Date("2026-07-17T12:00:00-03:00").getTime();
+        var target = new Date("2026-07-20T12:00:00-03:00").getTime();
         var daysEl = document.getElementById("cd-days");
         var hoursEl = document.getElementById("cd-hours");
         var minsEl = document.getElementById("cd-mins");
@@ -1551,6 +1731,170 @@
 
         tick();
         var timer = setInterval(tick, 1000);
+      })();
+    </script>
+
+    <script>
+      /*
+        FORMULÁRIO DE PRÉ-CADASTRO PARA O LANÇAMENTO
+        --------------------------------
+        Este formulário envia as respostas para um Google Forms (que já
+        joga tudo formatado numa Planilha Google, exportável como .xlsx
+        a qualquer momento em Arquivo > Fazer download > Microsoft Excel).
+
+        Pra ativar, troque os 4 valores abaixo:
+
+        1. Crie (ou edite) um Google Forms com 3 perguntas, nesta ordem:
+           "Nome completo" (resposta curta), "E-mail" (resposta curta),
+           "CNPJ" (use PARÁGRAFO, não resposta curta — quem tem mais de um
+           CNPJ vai mandar todos juntos, um separado do outro por "; ").
+        2. Pra achar o entry de cada campo: clique com o botão direito em
+           cima do campo no formulário aberto → "Inspecionar" → procure por
+           algo como name="entry.123456789" no código destacado. Repita
+           pra cada um dos 3 campos.
+        3. Copie o FORM_ID (já preenchido abaixo, só troque se o formulário
+           mudar) e os 3 números "entry.XXXXX" e cole abaixo.
+      */
+      var GOOGLE_FORM_ID = "1FAIpQLSeFlmjcvR7BZX3BuIiIHEc9sX1QGu17IE9ajhfhRrQoyXq-tA";
+      var ENTRY_NOME = "entry.1073217480";
+      var ENTRY_EMAIL = "entry.788134356";
+      var ENTRY_CNPJ = "entry.1986732728";
+
+      (function () {
+        var form = document.getElementById("early-access-form");
+        var msg = document.getElementById("ea-msg");
+        var submitBtn = document.getElementById("ea-submit");
+        var cnpjList = document.getElementById("cnpj-list");
+        var addCnpjBtn = document.getElementById("add-cnpj");
+        var SUBMIT_LABEL = "Fazer meu pré-cadastro →";
+
+        function maskCnpj(input) {
+          var digits = input.value.replace(/\D/g, "").slice(0, 14);
+          var out = digits;
+          if (digits.length > 12) {
+            out = digits.replace(
+              /(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/,
+              "$1.$2.$3/$4-$5"
+            );
+          } else if (digits.length > 8) {
+            out = digits.replace(/(\d{2})(\d{3})(\d{3})(\d{0,4})/, "$1.$2.$3/$4");
+          } else if (digits.length > 5) {
+            out = digits.replace(/(\d{2})(\d{3})(\d{0,3})/, "$1.$2.$3");
+          } else if (digits.length > 2) {
+            out = digits.replace(/(\d{2})(\d{0,3})/, "$1.$2");
+          }
+          input.value = out;
+        }
+
+        function attachCnpjRow(row) {
+          var input = row.querySelector(".cnpj-field");
+          input.addEventListener("input", function () {
+            maskCnpj(input);
+          });
+          var removeBtn = row.querySelector(".cnpj-remove");
+          if (removeBtn) {
+            removeBtn.addEventListener("click", function () {
+              row.remove();
+            });
+          }
+        }
+
+        Array.prototype.forEach.call(
+          cnpjList.querySelectorAll(".cnpj-row"),
+          attachCnpjRow
+        );
+
+        addCnpjBtn.addEventListener("click", function () {
+          var row = document.createElement("div");
+          row.className = "cnpj-row";
+          row.innerHTML =
+            '<input type="text" class="cnpj-field" placeholder="00.000.000/0000-00" inputmode="numeric" maxlength="25" />' +
+            '<button type="button" class="cnpj-remove" title="Remover">×</button>';
+          cnpjList.appendChild(row);
+          attachCnpjRow(row);
+          row.querySelector(".cnpj-field").focus();
+        });
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          if (
+            GOOGLE_FORM_ID.indexOf("COLE_AQUI") === 0 ||
+            ENTRY_EMAIL.indexOf("COLE_AQUI") === 0
+          ) {
+            msg.textContent =
+              "Formulário ainda não configurado — veja as instruções no código-fonte.";
+            msg.className = "early-access-msg error";
+            return;
+          }
+
+          var emailValue = document.getElementById("ea-email").value.trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+            msg.textContent = "Confira o e-mail informado.";
+            msg.className = "early-access-msg error";
+            return;
+          }
+
+          var cnpjInputs = Array.prototype.slice.call(
+            cnpjList.querySelectorAll(".cnpj-field")
+          );
+          var cnpjs = [];
+          for (var i = 0; i < cnpjInputs.length; i++) {
+            var raw = cnpjInputs[i].value.trim();
+            if (!raw) continue;
+            var digits = raw.replace(/\D/g, "");
+            if (digits.length !== 14) {
+              msg.textContent =
+                "Confira o CNPJ " + (i + 1) + ", ele precisa ter 14 dígitos.";
+              msg.className = "early-access-msg error";
+              return;
+            }
+            cnpjs.push(raw);
+          }
+          if (cnpjs.length === 0) {
+            msg.textContent = "Informe ao menos um CNPJ.";
+            msg.className = "early-access-msg error";
+            return;
+          }
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Enviando...";
+
+          var data = new URLSearchParams();
+          data.append(ENTRY_NOME, document.getElementById("ea-nome").value);
+          data.append(ENTRY_EMAIL, emailValue);
+          data.append(ENTRY_CNPJ, cnpjs.join("; "));
+
+          fetch(
+            "https://docs.google.com/forms/d/e/" +
+              GOOGLE_FORM_ID +
+              "/formResponse",
+            {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: data.toString(),
+            }
+          )
+            .then(function () {
+              form.reset();
+              while (cnpjList.children.length > 1) {
+                cnpjList.removeChild(cnpjList.lastChild);
+              }
+              msg.textContent =
+                "Recebemos seu cadastro! Em breve entraremos em contato. 🎉";
+              msg.className = "early-access-msg ok";
+              submitBtn.textContent = SUBMIT_LABEL;
+              submitBtn.disabled = false;
+            })
+            .catch(function () {
+              msg.textContent =
+                "Não foi possível enviar agora. Tente novamente em instantes.";
+              msg.className = "early-access-msg error";
+              submitBtn.textContent = SUBMIT_LABEL;
+              submitBtn.disabled = false;
+            });
+        });
       })();
     </script>
   </body>
