@@ -609,6 +609,21 @@
         );
       }
 
+      .owner-notice {
+        margin-top: 18px;
+        background: rgba(245, 184, 0, 0.1);
+        border: 1px solid rgba(245, 184, 0, 0.35);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 0.82rem;
+        color: var(--ink-dim);
+        line-height: 1.5;
+      }
+
+      .owner-notice strong {
+        color: var(--gold);
+      }
+
       .early-access-form {
         display: flex;
         flex-direction: column;
@@ -1446,6 +1461,11 @@
               o novo NorthIQ for lançado. Tem mais de um CNPJ? Sem problema,
               é só adicionar todos.
             </p>
+            <div class="owner-notice">
+              ⚠️ Esse cadastro é só para o <strong>proprietário da loja</strong>.
+              Depois do lançamento, é o proprietário quem cria os acessos e
+              define as permissões de cada colaborador dentro do NorthIQ.
+            </div>
           </div>
 
           <form class="early-access-form" id="early-access-form">
