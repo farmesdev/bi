@@ -156,109 +156,84 @@
         border: 1px solid rgba(245, 184, 0, 0.35);
       }
 
-      /* Top alert - Prezado associado, em evidência */
-      .top-alert {
+      /* Launch banner - o NorthIQ chegou, com fogos */
+      .launch-banner {
+        position: relative;
+        overflow: hidden;
         background: linear-gradient(
-          135deg,
-          rgba(245, 184, 0, 0.14),
-          rgba(245, 184, 0, 0.02)
+          160deg,
+          rgba(245, 184, 0, 0.16),
+          var(--bg-alt) 70%
         );
         border-bottom: 1px solid var(--gold-dim);
       }
 
-      .top-alert-inner {
-        display: flex;
-        gap: 18px;
-        align-items: flex-start;
-        padding: 22px 24px;
+      .fireworks-container {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
       }
 
-      .top-alert .ico {
-        font-size: 1.8rem;
-        flex-shrink: 0;
+      .firework-particle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        animation: firework-explode 1.1s ease-out forwards;
       }
 
-      .top-alert h3 {
-        margin: 0 0 8px;
-        color: var(--gold);
-        font-size: 1.2rem;
+      @keyframes firework-explode {
+        0% {
+          transform: translate(0, 0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--fx), var(--fy)) scale(0.2);
+          opacity: 0;
+        }
       }
 
-      .top-alert p {
-        margin: 0 0 6px;
-        color: var(--ink-dim);
-        font-size: 0.95rem;
-      }
-
-      .top-alert .highlight {
-        color: var(--gold);
-        font-weight: 700;
-      }
-
-      /* Countdown */
-      .countdown-section {
-        background: var(--bg-alt);
-        border-bottom: 1px solid var(--card-border);
-      }
-
-      .countdown-inner {
-        padding: 22px 24px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
+      .launch-banner-inner {
+        position: relative;
+        z-index: 1;
+        padding: 40px 24px;
         text-align: center;
       }
 
-      .countdown-label {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--ink-dim);
-      }
-
-      .countdown-timer {
-        display: flex;
+      .launch-badge {
+        display: inline-flex;
         align-items: center;
-        gap: 8px;
-      }
-
-      .c-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: var(--card);
-        border: 1px solid var(--gold-dim);
-        border-radius: 10px;
-        min-width: 56px;
-        padding: 8px 4px 6px;
-      }
-
-      .c-box span {
-        font-size: 1.3rem;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 0.78rem;
         font-weight: 700;
-        color: var(--gold);
-        line-height: 1;
-        font-variant-numeric: tabular-nums;
-      }
-
-      .c-box small {
-        font-size: 0.6rem;
-        color: var(--ink-dim);
-        text-transform: uppercase;
         letter-spacing: 0.5px;
-        margin-top: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        background: rgba(245, 184, 0, 0.12);
+        border: 1px solid rgba(245, 184, 0, 0.4);
+        margin-bottom: 16px;
       }
 
-      .c-sep {
-        color: var(--gold-dim);
-        font-weight: 700;
-        font-size: 1.1rem;
+      .launch-banner h2 {
+        margin: 0 0 10px;
+        font-size: 2rem;
       }
 
-      .countdown-date {
-        font-size: 0.8rem;
+      .launch-banner p {
+        margin: 0 0 22px;
         color: var(--ink-dim);
+        font-size: 1rem;
+      }
+
+      @media (max-width: 560px) {
+        .launch-banner h2 {
+          font-size: 1.5rem;
+        }
       }
 
       /* Hero */
@@ -592,16 +567,16 @@
         font-size: 0.56rem;
       }
 
-      /* Early access */
-      .early-access-card {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
+      /* Contact TI */
+      .contact-ti-card {
+        display: flex;
         align-items: center;
+        justify-content: space-between;
+        gap: 24px;
         background: var(--card);
         border: 1px solid var(--gold-dim);
         border-radius: 16px;
-        padding: 40px;
+        padding: 36px 40px;
         background-image: linear-gradient(
           135deg,
           rgba(245, 184, 0, 0.08),
@@ -609,135 +584,55 @@
         );
       }
 
-      .owner-notice {
-        margin-top: 18px;
-        background: rgba(245, 184, 0, 0.1);
-        border: 1px solid rgba(245, 184, 0, 0.35);
-        border-radius: 10px;
-        padding: 12px 14px;
-        font-size: 0.82rem;
-        color: var(--ink-dim);
-        line-height: 1.5;
-      }
-
-      .owner-notice strong {
+      .contact-ti-card .ico-box {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        background: rgba(245, 184, 0, 0.12);
         color: var(--gold);
-      }
-
-      .early-access-form {
         display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-
-      .early-access-form label {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        font-size: 0.8rem;
-        color: var(--ink-dim);
-      }
-
-      .early-access-form input {
-        background: var(--bg-alt);
-        border: 1px solid var(--card-border);
-        border-radius: 8px;
-        padding: 11px 12px;
-        color: var(--ink);
-        font-size: 0.92rem;
-        font-family: inherit;
-      }
-
-      .early-access-form input:focus {
-        outline: none;
-        border-color: var(--gold-dim);
-      }
-
-      .field-group {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        font-size: 0.8rem;
-        color: var(--ink-dim);
-      }
-
-      .cnpj-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .cnpj-row {
-        display: flex;
-        gap: 8px;
         align-items: center;
-      }
-
-      .cnpj-row input {
-        flex: 1;
-      }
-
-      .cnpj-remove {
-        background: transparent;
-        border: 1px solid var(--card-border);
-        color: var(--ink-dim);
-        width: 38px;
-        height: 38px;
-        border-radius: 8px;
-        font-size: 1rem;
-        cursor: pointer;
+        justify-content: center;
+        font-size: 1.5rem;
         flex-shrink: 0;
       }
 
-      .cnpj-remove:hover {
-        border-color: var(--red);
-        color: var(--red);
+      .contact-ti-card h3 {
+        font-size: 1.5rem;
+        margin: 0 0 8px;
       }
 
-      .add-cnpj-btn {
-        align-self: flex-start;
-        background: transparent;
-        border: none;
-        color: var(--gold);
-        font-size: 0.78rem;
-        font-weight: 600;
-        cursor: pointer;
-        padding: 2px 0;
-      }
-
-      .add-cnpj-btn:hover {
-        text-decoration: underline;
-      }
-
-      .early-access-form button[type="submit"] {
-        margin-top: 6px;
-        border: none;
+      .contact-ti-card p {
+        margin: 0;
+        color: var(--ink-dim);
         font-size: 0.95rem;
       }
 
-      .early-access-form button:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
+      .contact-ti-card .right {
+        display: flex;
+        flex-shrink: 0;
       }
 
-      .early-access-msg {
-        margin: 0;
-        font-size: 0.82rem;
-        min-height: 1.2em;
-      }
-
-      .early-access-msg.ok {
-        color: var(--green);
-      }
-
-      .early-access-msg.error {
-        color: var(--red);
-      }
-
-      @media (max-width: 900px) {
-        .early-access-card {
-          grid-template-columns: 1fr;
+      @media (max-width: 700px) {
+        .contact-ti-card {
+          flex-direction: column;
+          text-align: center;
           padding: 28px;
+        }
+      }
+
+      .contact-ti-card--banner {
+        margin: 28px auto 0;
+        max-width: 640px;
+        background: rgba(10, 14, 26, 0.55);
+        border: 1px solid var(--gold-dim);
+        text-align: left;
+      }
+
+      @media (max-width: 700px) {
+        .contact-ti-card--banner {
+          flex-direction: column;
+          text-align: center;
         }
       }
 
@@ -934,6 +829,278 @@
 
       .app-section .step-highlight p {
         color: var(--ink);
+      }
+
+      /* Install guide (iOS / Android walkthrough) */
+      .install-guide {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin: 36px 0;
+      }
+
+      .install-col-head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+
+      .install-step {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .install-step .num {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: rgba(245, 184, 0, 0.14);
+        color: var(--gold);
+        font-weight: 700;
+        font-size: 0.72rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-bottom: 8px;
+      }
+
+      .install-step .step-text p {
+        margin: 0;
+        color: var(--ink-dim);
+        font-size: 0.85rem;
+      }
+
+      .install-step .step-text p strong {
+        color: var(--ink);
+      }
+
+      .os-mock {
+        width: 140px;
+        flex-shrink: 0;
+        background: var(--bg-alt);
+        border: 1px solid var(--card-border);
+        border-radius: 10px;
+        padding: 8px;
+      }
+
+      .os-mock-bar {
+        display: flex;
+        align-items: center;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 6px;
+        padding: 4px 6px;
+        margin-bottom: 8px;
+        color: var(--ink-dim);
+        font-size: 0.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .os-mock-icons {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .os-mock-icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink-dim);
+        font-size: 0.62rem;
+      }
+
+      .os-mock-icon.highlight {
+        background: rgba(245, 184, 0, 0.16);
+        border: 1px solid var(--gold-dim);
+        color: var(--gold);
+      }
+
+      .os-sheet-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 4px;
+        border-radius: 5px;
+        color: var(--ink-dim);
+        font-size: 0.56rem;
+        margin-bottom: 3px;
+      }
+
+      .os-sheet-row.highlight {
+        background: rgba(245, 184, 0, 0.14);
+        border: 1px solid rgba(245, 184, 0, 0.4);
+        color: var(--gold);
+        font-weight: 600;
+      }
+
+      .os-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+
+      .os-grid-icon {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 20%;
+        background: var(--card-border);
+      }
+
+      .os-grid-icon.new {
+        background: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #16130a;
+        font-weight: 700;
+        font-size: 0.5rem;
+        box-shadow: 0 0 0 2px rgba(245, 184, 0, 0.3);
+      }
+
+      .android-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+        background: var(--card);
+        border: 1px solid var(--gold-dim);
+        border-radius: 8px;
+        padding: 8px;
+      }
+
+      .android-banner .icon {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        background: var(--gold);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.6rem;
+      }
+
+      .android-banner .label {
+        font-size: 0.55rem;
+        color: var(--ink);
+        flex: 1;
+      }
+
+      .android-banner .install-btn {
+        background: var(--gold);
+        color: #16130a;
+        font-size: 0.52rem;
+        font-weight: 700;
+        padding: 4px 8px;
+        border-radius: 5px;
+        white-space: nowrap;
+      }
+
+      .notif-guide {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        padding: 28px;
+      }
+
+      .notif-guide .num {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(245, 184, 0, 0.12);
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .notif-guide p {
+        margin: 0;
+        color: var(--ink-dim);
+        font-size: 0.9rem;
+      }
+
+      .notif-guide p strong {
+        color: var(--ink);
+      }
+
+      .notif-mock {
+        width: 220px;
+        flex-shrink: 0;
+        background: var(--bg-alt);
+        border: 1px solid var(--card-border);
+        border-radius: 10px;
+        overflow: hidden;
+        font-size: 0.65rem;
+      }
+
+      .notif-mock-bar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--card-border);
+        color: var(--ink-dim);
+      }
+
+      .notif-mock-bar .user {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .notif-mock-dropdown {
+        padding: 6px;
+      }
+
+      .notif-mock-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 8px;
+        border-radius: 6px;
+        color: var(--ink-dim);
+      }
+
+      .notif-mock-row.highlight {
+        background: rgba(245, 184, 0, 0.14);
+        color: var(--gold);
+        font-weight: 700;
+        border: 1px solid rgba(245, 184, 0, 0.4);
+      }
+
+      .notif-mock-row.danger {
+        color: var(--red);
+      }
+
+      @media (max-width: 900px) {
+        .install-guide {
+          grid-template-columns: 1fr;
+        }
+        .notif-guide {
+          flex-direction: column;
+          text-align: center;
+        }
       }
 
       .phone-wrap {
@@ -1239,45 +1406,40 @@
           <a href="#app">Aplicativo</a>
         </nav>
         <div class="nav-actions">
-          <a class="btn btn-outline" href="bi.html">Acessar BI Antigo</a>
-          <a class="btn btn-primary" href="#pre-cadastro">Pré-cadastro</a>
+          <a class="btn btn-primary" href="https://farmes.northiq.com.br" target="_blank" rel="noopener">Acessar agora</a>
         </div>
       </div>
     </header>
 
-    <div class="top-alert">
-      <div class="wrap top-alert-inner">
-        <div class="ico">📣</div>
-        <div>
-          <h3>Prezado associado,</h3>
-          <p>
-            O antigo BI será desativado em breve, mas não fique triste: algo
-            muito melhor está nascendo!
-          </p>
-          <p>
-            O NorthIQ foi criado para transformar a forma como você analisa e
-            toma decisões. Mais rápido, mais moderno e muito mais completo.
-          </p>
-          <p class="highlight">
-            Em breve, você terá uma nova experiência. Prepare-se para evoluir!
-          </p>
-        </div>
-      </div>
-    </div>
+    <div class="launch-banner">
+      <div class="fireworks-container" id="fireworks-container"></div>
+      <div class="wrap launch-banner-inner">
+        <div class="launch-badge">🎉 Ao vivo agora</div>
+        <h2>O novo <span class="accent" style="color: var(--gold)">NorthIQ</span> chegou!</h2>
+        <p>
+          O lançamento aconteceu hoje às 15:30 — a nova experiência em
+          Business Intelligence já está no ar. Acesse agora mesmo.
+        </p>
+        <a
+          class="btn btn-primary"
+          href="https://farmes.northiq.com.br"
+          target="_blank"
+          rel="noopener"
+          >Acessar o NorthIQ agora →</a
+        >
 
-    <div class="countdown-section">
-      <div class="wrap countdown-inner">
-        <div class="countdown-label">⏳ Grande lançamento do NorthIQ em</div>
-        <div class="countdown-timer" id="countdown-timer">
-          <div class="c-box"><span id="cd-days">00</span><small>dias</small></div>
-          <div class="c-sep">:</div>
-          <div class="c-box"><span id="cd-hours">00</span><small>horas</small></div>
-          <div class="c-sep">:</div>
-          <div class="c-box"><span id="cd-mins">00</span><small>min</small></div>
-          <div class="c-sep">:</div>
-          <div class="c-box"><span id="cd-secs">00</span><small>seg</small></div>
+        <div class="contact-ti-card contact-ti-card--banner">
+          <div style="display: flex; gap: 20px; align-items: center">
+            <div class="ico-box">☎</div>
+            <div>
+              <h3>Garanta seu acesso ao <span class="accent">NorthIQ</span></h3>
+              <p>Ainda não tem acesso? Fale com o TI.</p>
+            </div>
+          </div>
+          <div class="right">
+            <a class="btn btn-primary" href="tel:+5527992621084">Fale com o TI →</a>
+          </div>
         </div>
-        <div class="countdown-date">Segunda-feira, 12h</div>
       </div>
     </div>
 
@@ -1323,8 +1485,8 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#pre-cadastro">Fazer meu pré-cadastro →</a>
-            <a class="btn btn-outline" href="bi.html">Acessar BI Antigo</a>
+            <a class="btn btn-primary" href="https://farmes.northiq.com.br" target="_blank" rel="noopener">Acessar o NorthIQ agora →</a>
+            <a class="btn btn-outline" href="#app">Ver como instalar o app →</a>
           </div>
         </div>
 
@@ -1449,49 +1611,6 @@
         </div>
       </section>
 
-      <section id="pre-cadastro">
-        <div class="early-access-card">
-          <div class="early-access-info">
-            <div class="eyebrow">Cadastre-se agora</div>
-            <h2 style="font-size: 1.9rem; margin: 0 0 12px">
-              Garanta seu acesso no <span class="accent">lançamento</span>
-            </h2>
-            <p style="color: var(--ink-dim); font-size: 0.95rem; margin: 0 0 0">
-              Preencha seus dados agora para já ter acesso liberado assim que
-              o novo NorthIQ for lançado. Tem mais de um CNPJ? Sem problema,
-              é só adicionar todos.
-            </p>
-            <div class="owner-notice">
-              ⚠️ Esse cadastro é só para o <strong>proprietário da loja</strong>.
-              Depois do lançamento, é o proprietário quem cria os acessos e
-              define as permissões de cada colaborador dentro do NorthIQ.
-            </div>
-          </div>
-
-          <form class="early-access-form" id="early-access-form">
-            <label>
-              Nome completo
-              <input type="text" name="nome" id="ea-nome" required placeholder="Seu nome completo" />
-            </label>
-            <label>
-              E-mail
-              <input type="email" name="email" id="ea-email" required placeholder="seu@email.com" />
-            </label>
-            <div class="field-group">
-              <span class="field-label">CNPJ</span>
-              <div id="cnpj-list" class="cnpj-list">
-                <div class="cnpj-row">
-                  <input type="text" class="cnpj-field" required placeholder="00.000.000/0000-00" inputmode="numeric" maxlength="25" />
-                </div>
-              </div>
-              <button type="button" id="add-cnpj" class="add-cnpj-btn">+ Adicionar outro CNPJ</button>
-            </div>
-            <button type="submit" class="btn btn-primary" id="ea-submit">Fazer meu pré-cadastro →</button>
-            <p class="early-access-msg" id="ea-msg"></p>
-          </form>
-        </div>
-      </section>
-
       <section id="recursos">
         <div class="section-head">
           <h2>A <span class="accent">evolução</span> do sistema</h2>
@@ -1606,48 +1725,15 @@
       <section id="app">
         <div class="app-section">
           <div>
-            <div class="eyebrow">Novidade</div>
+            <div class="eyebrow">Instale agora</div>
             <h2 style="font-size: 1.9rem; margin: 0 0 14px">
-              O NorthIQ também vai caber<br />no seu <span class="accent">bolso</span>
+              O NorthIQ já cabe<br />no seu <span class="accent">bolso</span>
             </h2>
             <p style="color: var(--ink-dim); font-size: 0.95rem; margin: 0">
-              Em breve o NorthIQ também estará disponível como aplicativo,
-              direto no seu celular — sem precisar baixar nada de loja
-              nenhuma.
+              O NorthIQ já está disponível como aplicativo, direto no seu
+              celular — sem precisar baixar nada de loja nenhuma. Veja como
+              instalar abaixo.
             </p>
-            <div class="steps">
-              <div class="step">
-                <div class="num">1</div>
-                <p>
-                  <strong>Você abre o NorthIQ pelo navegador do celular</strong>,
-                  como já faz hoje.
-                </p>
-              </div>
-              <div class="step">
-                <div class="num">2</div>
-                <p>
-                  <strong>Escolhe a opção "Adicionar à tela inicial"</strong> —
-                  simples assim, sem precisar baixar nada.
-                </p>
-              </div>
-              <div class="step">
-                <div class="num">3</div>
-                <p>
-                  <strong>Pronto</strong>: o ícone do NorthIQ aparece junto
-                  dos seus outros aplicativos, abre rápido, ocupa pouquíssimo
-                  espaço e já vem sempre atualizado — sem precisar passar
-                  pela loja de aplicativos.
-                </p>
-              </div>
-              <div class="step step-highlight">
-                <div class="num">4</div>
-                <p>
-                  <strong>E o melhor: você recebe notificação de repasse direto no celular.</strong>
-                  Assim que um novo repasse for processado, o app avisa na
-                  hora — sem precisar abrir o sistema pra ficar checando.
-                </p>
-              </div>
-            </div>
           </div>
 
           <div class="phone-wrap">
@@ -1668,24 +1754,164 @@
               <div class="screen">
                 <div class="app-icon">
                   <img src="images/logo-mark.png" alt="" />
-                  <span class="badge-dot">1</span>
+                  <span class="badge-dot">2</span>
                 </div>
                 <div class="app-name">NorthIQ</div>
                 <div class="fake-row" style="width: 60%"></div>
                 <div class="fake-row" style="width: 40%; margin-bottom: 16px"></div>
                 <div class="fake-card fake-card-alert">
                   <div class="fake-card-head">
-                    <span>🔔 Repasses</span>
+                    <span style="text-transform: uppercase; color: #fff">🔔 Repasses</span>
                     <span class="fake-tag">novo</span>
                   </div>
                   <div class="fake-row" style="width: 80%; background: var(--gold); opacity: 0.6"></div>
                   <div class="fake-row" style="width: 55%"></div>
                 </div>
-                <div class="fake-card">
-                  <div class="fake-row" style="width: 70%; background: var(--blue); opacity: 0.5"></div>
+                <div class="fake-card fake-card-alert">
+                  <div class="fake-card-head">
+                    <span style="text-transform: uppercase; color: #fff">📣 Mural Farmes</span>
+                    <span class="fake-tag">novo</span>
+                  </div>
+                  <div class="fake-row" style="width: 70%; background: var(--blue); opacity: 0.6"></div>
                   <div class="fake-row" style="width: 55%"></div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="install-guide">
+          <div class="install-col">
+            <div class="install-col-head"><span>📱</span> No iPhone (iOS)</div>
+
+            <div class="install-step">
+              <div>
+                <div class="os-mock">
+                  <div class="os-mock-bar">farmes.northiq.com.br</div>
+                  <div class="os-mock-icons">
+                    <span class="os-mock-icon">‹</span>
+                    <span class="os-mock-icon">›</span>
+                    <span class="os-mock-icon highlight">⬆</span>
+                    <span class="os-mock-icon">☆</span>
+                    <span class="os-mock-icon">▢</span>
+                  </div>
+                </div>
+              </div>
+              <div class="step-text">
+                <div class="num">1</div>
+                <p>
+                  Abra o NorthIQ pelo <strong>Safari</strong> e toque no
+                  ícone de compartilhar, na barra de baixo.
+                </p>
+              </div>
+            </div>
+
+            <div class="install-step">
+              <div>
+                <div class="os-mock">
+                  <div class="os-sheet-row">📋 Copiar</div>
+                  <div class="os-sheet-row">⭐ Adicionar aos Favoritos</div>
+                  <div class="os-sheet-row highlight">
+                    🏠 Adicionar à Tela de Início
+                  </div>
+                  <div class="os-sheet-row">🖨 Imprimir</div>
+                </div>
+              </div>
+              <div class="step-text">
+                <div class="num">2</div>
+                <p>
+                  Deslize as opções e toque em
+                  <strong>"Adicionar à Tela de Início"</strong>.
+                </p>
+              </div>
+            </div>
+
+            <div class="install-step">
+              <div>
+                <div class="os-mock">
+                  <div class="os-grid">
+                    <div class="os-grid-icon"></div>
+                    <div class="os-grid-icon"></div>
+                    <div class="os-grid-icon"></div>
+                    <div class="os-grid-icon new">N</div>
+                  </div>
+                </div>
+              </div>
+              <div class="step-text">
+                <div class="num">3</div>
+                <p>
+                  Toque em <strong>Adicionar</strong>, no canto superior
+                  direito — pronto, o ícone já aparece na tela inicial.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="install-col">
+            <div class="install-col-head"><span>🤖</span> No Android</div>
+
+            <div class="install-step">
+              <div>
+                <div class="os-mock">
+                  <div class="android-banner">
+                    <span class="icon">N</span>
+                    <span class="label">Instalar app NorthIQ?</span>
+                    <span class="install-btn">Instalar</span>
+                  </div>
+                </div>
+              </div>
+              <div class="step-text">
+                <div class="num">1</div>
+                <p>
+                  No Chrome, ao abrir o NorthIQ aparece um banner
+                  perguntando se você quer instalar o app.
+                </p>
+              </div>
+            </div>
+
+            <div class="install-step">
+              <div>
+                <div class="os-mock">
+                  <div class="os-grid">
+                    <div class="os-grid-icon"></div>
+                    <div class="os-grid-icon"></div>
+                    <div class="os-grid-icon"></div>
+                    <div class="os-grid-icon new">N</div>
+                  </div>
+                </div>
+              </div>
+              <div class="step-text">
+                <div class="num">2</div>
+                <p>
+                  É só tocar em <strong>Instalar</strong> — pronto, sem
+                  precisar passar pela Play Store.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-guide">
+          <div class="num">🔔</div>
+          <p>
+            <strong>Ative as notificações</strong> para receber direto no
+            celular os avisos de <strong>REPASSES</strong> e
+            <strong>MURAL FARMES</strong>: depois de acessar o NorthIQ,
+            toque no seu nome no canto superior direito e clique em
+            <strong>"Ativar Notificações"</strong>.
+          </p>
+          <div class="notif-mock">
+            <div class="notif-mock-bar">
+              <span>ⓘ</span>
+              <span>🔔</span>
+              <span class="user">Usuário ▾</span>
+            </div>
+            <div class="notif-mock-dropdown">
+              <div class="notif-mock-row highlight">
+                🔔 Ativar Notificações
+              </div>
+              <div class="notif-mock-row">👤 Meu Perfil</div>
+              <div class="notif-mock-row danger">⏻ Sair</div>
             </div>
           </div>
         </div>
@@ -1696,14 +1922,14 @@
           <div class="left">
             <div class="rocket">🚀</div>
             <div class="lines">
-              <p class="top">O futuro da inteligência de dados está chegando.</p>
+              <p class="top">O futuro da inteligência de dados chegou.</p>
               <p class="bottom">
-                Prepare-se para uma nova era com o
+                Comece agora a nova era com o
                 <span style="color: var(--gold)">NorthIQ</span>.
               </p>
             </div>
           </div>
-          <a class="btn btn-primary" href="bi.html">Acessar BI Antigo →</a>
+          <a class="btn btn-primary" href="https://farmes.northiq.com.br" target="_blank" rel="noopener">Acessar o NorthIQ →</a>
         </div>
       </section>
     </main>
@@ -1719,203 +1945,56 @@
 
     <script>
       (function () {
-        var target = new Date("2026-07-20T12:00:00-03:00").getTime();
-        var daysEl = document.getElementById("cd-days");
-        var hoursEl = document.getElementById("cd-hours");
-        var minsEl = document.getElementById("cd-mins");
-        var secsEl = document.getElementById("cd-secs");
+        var container = document.getElementById("fireworks-container");
+        if (!container) return;
+        var colors = ["#f5b800", "#2ecc71", "#3b82f6", "#a78bfa", "#ef4444"];
 
-        function pad(n) {
-          return String(n).padStart(2, "0");
-        }
+        function launchFirework() {
+          var w = container.offsetWidth;
+          var h = container.offsetHeight;
+          var originX = w * (0.15 + Math.random() * 0.7);
+          var originY = h * (0.15 + Math.random() * 0.55);
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          var particleCount = 36;
 
-        function tick() {
-          var diff = target - Date.now();
-          if (diff <= 0) {
-            daysEl.textContent = "00";
-            hoursEl.textContent = "00";
-            minsEl.textContent = "00";
-            secsEl.textContent = "00";
-            clearInterval(timer);
-            return;
+          for (var i = 0; i < particleCount; i++) {
+            var particle = document.createElement("div");
+            particle.className = "firework-particle";
+            var angle = (Math.PI * 2 * i) / particleCount + Math.random() * 0.3;
+            var distance = 40 + Math.random() * 60;
+            var fx = Math.cos(angle) * distance;
+            var fy = Math.sin(angle) * distance;
+            particle.style.left = originX + "px";
+            particle.style.top = originY + "px";
+            particle.style.background = color;
+            particle.style.boxShadow = "0 0 6px 1px " + color;
+            particle.style.setProperty("--fx", fx + "px");
+            particle.style.setProperty("--fy", fy + "px");
+            container.appendChild(particle);
+            (function (p) {
+              setTimeout(function () {
+                p.remove();
+              }, 1200);
+            })(particle);
           }
-          var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-          var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-          var mins = Math.floor((diff / (1000 * 60)) % 60);
-          var secs = Math.floor((diff / 1000) % 60);
-          daysEl.textContent = pad(days);
-          hoursEl.textContent = pad(hours);
-          minsEl.textContent = pad(mins);
-          secsEl.textContent = pad(secs);
         }
 
-        tick();
-        var timer = setInterval(tick, 1000);
+        launchFirework();
+        setTimeout(launchFirework, 200);
+        setTimeout(launchFirework, 450);
+        setTimeout(launchFirework, 750);
+        var timer = setInterval(function () {
+          launchFirework();
+          if (Math.random() > 0.5) {
+            setTimeout(launchFirework, 200);
+          }
+        }, 600);
+
+        setTimeout(function () {
+          clearInterval(timer);
+        }, 30000);
       })();
     </script>
 
-    <script>
-      /*
-        FORMULÁRIO DE PRÉ-CADASTRO PARA O LANÇAMENTO
-        --------------------------------
-        Este formulário envia as respostas para um Google Forms (que já
-        joga tudo formatado numa Planilha Google, exportável como .xlsx
-        a qualquer momento em Arquivo > Fazer download > Microsoft Excel).
-
-        Pra ativar, troque os 4 valores abaixo:
-
-        1. Crie (ou edite) um Google Forms com 3 perguntas, nesta ordem:
-           "Nome completo" (resposta curta), "E-mail" (resposta curta),
-           "CNPJ" (use PARÁGRAFO, não resposta curta — quem tem mais de um
-           CNPJ vai mandar todos juntos, um separado do outro por "; ").
-        2. Pra achar o entry de cada campo: clique com o botão direito em
-           cima do campo no formulário aberto → "Inspecionar" → procure por
-           algo como name="entry.123456789" no código destacado. Repita
-           pra cada um dos 3 campos.
-        3. Copie o FORM_ID (já preenchido abaixo, só troque se o formulário
-           mudar) e os 3 números "entry.XXXXX" e cole abaixo.
-      */
-      var GOOGLE_FORM_ID = "1FAIpQLSeFlmjcvR7BZX3BuIiIHEc9sX1QGu17IE9ajhfhRrQoyXq-tA";
-      var ENTRY_NOME = "entry.1073217480";
-      var ENTRY_EMAIL = "entry.788134356";
-      var ENTRY_CNPJ = "entry.1986732728";
-
-      (function () {
-        var form = document.getElementById("early-access-form");
-        var msg = document.getElementById("ea-msg");
-        var submitBtn = document.getElementById("ea-submit");
-        var cnpjList = document.getElementById("cnpj-list");
-        var addCnpjBtn = document.getElementById("add-cnpj");
-        var SUBMIT_LABEL = "Fazer meu pré-cadastro →";
-
-        function maskCnpj(input) {
-          var digits = input.value.replace(/\D/g, "").slice(0, 14);
-          var out = digits;
-          if (digits.length > 12) {
-            out = digits.replace(
-              /(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/,
-              "$1.$2.$3/$4-$5"
-            );
-          } else if (digits.length > 8) {
-            out = digits.replace(/(\d{2})(\d{3})(\d{3})(\d{0,4})/, "$1.$2.$3/$4");
-          } else if (digits.length > 5) {
-            out = digits.replace(/(\d{2})(\d{3})(\d{0,3})/, "$1.$2.$3");
-          } else if (digits.length > 2) {
-            out = digits.replace(/(\d{2})(\d{0,3})/, "$1.$2");
-          }
-          input.value = out;
-        }
-
-        function attachCnpjRow(row) {
-          var input = row.querySelector(".cnpj-field");
-          input.addEventListener("input", function () {
-            maskCnpj(input);
-          });
-          var removeBtn = row.querySelector(".cnpj-remove");
-          if (removeBtn) {
-            removeBtn.addEventListener("click", function () {
-              row.remove();
-            });
-          }
-        }
-
-        Array.prototype.forEach.call(
-          cnpjList.querySelectorAll(".cnpj-row"),
-          attachCnpjRow
-        );
-
-        addCnpjBtn.addEventListener("click", function () {
-          var row = document.createElement("div");
-          row.className = "cnpj-row";
-          row.innerHTML =
-            '<input type="text" class="cnpj-field" placeholder="00.000.000/0000-00" inputmode="numeric" maxlength="25" />' +
-            '<button type="button" class="cnpj-remove" title="Remover">×</button>';
-          cnpjList.appendChild(row);
-          attachCnpjRow(row);
-          row.querySelector(".cnpj-field").focus();
-        });
-
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          if (
-            GOOGLE_FORM_ID.indexOf("COLE_AQUI") === 0 ||
-            ENTRY_EMAIL.indexOf("COLE_AQUI") === 0
-          ) {
-            msg.textContent =
-              "Formulário ainda não configurado — veja as instruções no código-fonte.";
-            msg.className = "early-access-msg error";
-            return;
-          }
-
-          var emailValue = document.getElementById("ea-email").value.trim();
-          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
-            msg.textContent = "Confira o e-mail informado.";
-            msg.className = "early-access-msg error";
-            return;
-          }
-
-          var cnpjInputs = Array.prototype.slice.call(
-            cnpjList.querySelectorAll(".cnpj-field")
-          );
-          var cnpjs = [];
-          for (var i = 0; i < cnpjInputs.length; i++) {
-            var raw = cnpjInputs[i].value.trim();
-            if (!raw) continue;
-            var digits = raw.replace(/\D/g, "");
-            if (digits.length !== 14) {
-              msg.textContent =
-                "Confira o CNPJ " + (i + 1) + ", ele precisa ter 14 dígitos.";
-              msg.className = "early-access-msg error";
-              return;
-            }
-            cnpjs.push(raw);
-          }
-          if (cnpjs.length === 0) {
-            msg.textContent = "Informe ao menos um CNPJ.";
-            msg.className = "early-access-msg error";
-            return;
-          }
-
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Enviando...";
-
-          var data = new URLSearchParams();
-          data.append(ENTRY_NOME, document.getElementById("ea-nome").value);
-          data.append(ENTRY_EMAIL, emailValue);
-          data.append(ENTRY_CNPJ, cnpjs.join("; "));
-
-          fetch(
-            "https://docs.google.com/forms/d/e/" +
-              GOOGLE_FORM_ID +
-              "/formResponse",
-            {
-              method: "POST",
-              mode: "no-cors",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: data.toString(),
-            }
-          )
-            .then(function () {
-              form.reset();
-              while (cnpjList.children.length > 1) {
-                cnpjList.removeChild(cnpjList.lastChild);
-              }
-              msg.textContent =
-                "Recebemos seu cadastro! Em breve entraremos em contato. 🎉";
-              msg.className = "early-access-msg ok";
-              submitBtn.textContent = SUBMIT_LABEL;
-              submitBtn.disabled = false;
-            })
-            .catch(function () {
-              msg.textContent =
-                "Não foi possível enviar agora. Tente novamente em instantes.";
-              msg.className = "early-access-msg error";
-              submitBtn.textContent = SUBMIT_LABEL;
-              submitBtn.disabled = false;
-            });
-        });
-      })();
-    </script>
   </body>
 </html>
